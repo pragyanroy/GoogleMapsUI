@@ -1,5 +1,7 @@
-'use strict';
-/*load Map*/
+"use strict";
+function load() {
+	ko.applyBindings(new ViewModel());
+}
 
 function ViewModel() {
 	var current = this;
@@ -39,9 +41,7 @@ var placename = function(data)
 		alert("There was an error with the Foursquare API call. Please refresh the page.");
 	});
 
-	current.contentString = '<div class="info-window-content"><div class="title"><b>' +data.plname + "</b></div>" +
-        '<div class="content">' + current.currentStreet + "</div>" 
-        +'<div class="content">' + current.currentCity + "</div>" ;
+	current.contentString = '<div class="info-window-content"><div class="title"><b>' +data.plname + "</b></div>" +'<div class="content">' + current.currentStreet + "</div>" +'<div class="content">' + current.currentCity + "</div>";
 
 	current.infoWindow = new google.maps.InfoWindow({content: current.contentString});
 
@@ -87,7 +87,7 @@ var placename = function(data)
 
 	this.filteredList = ko.computed( function() {
 		var filterentry = current.placeentered().toLowerCase();
-		if (filterentry==null) {
+		if (filterentry===null) {
 			current.locationList().forEach(function(locationItem){
 				locationItem.visible(true);
 			});
