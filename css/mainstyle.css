@@ -1,0 +1,49 @@
+body {
+	margin: 0;
+	font-family: Comic Sans MS;
+}
+
+
+
+#search{
+       position:absolute;
+    top:0px; 
+    left:0px;
+    right:20%;
+    bottom:20%;
+    
+}
+#app{
+position:absolute;
+    top:5%; 
+    left:0px;
+    right:80%;
+    bottom:0;
+
+}
+
+#map{
+        
+	position:absolute;
+    top:0px; 
+    right:0px;
+    left:20%;
+    bottom:0px;;
+
+}
+
+
+.results {
+	margin: 0;
+	padding: 0;
+	
+}
+
+.placename {
+    margin: 12px;
+    padding: 12px;
+    list-style: none;
+    background-color: #FFFAF0;
+}
+
+

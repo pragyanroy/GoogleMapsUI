@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Roy-NeighbourhoodMap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/mainstyle.css">
+    
+</head>
+<body>
+
+  <div id="search">
+  <input  class="search" id="search-box" placeholder="Enter places to search...." data-bind="textInput: placeentered,  valueUpdate: 'afterkeydown'" />
+  </div>
+  
+  <div  id="app">
+         <div id="list">
+            <ul class="results" id="results" data-bind="foreach: filteredList">
+              <li class="placename" id="place" data-bind="text: plname, click: appear"></li>
+            </ul>
+        </div>  
+</div>
+<div id="map"> There is an Error while loading Google Maps. Please try after sometime.</div>
+
+           
+    <script src='js/knockout-3.4.1.js'></script>
+    <script src='js/jquery-3.1.1.min.js'></script>
+     <script src='js/load.js'></script>
+    <script src='js/app.js'></script>
+    <script src="js/data.js"></script>
+    
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLWvBO-RX9gHuwGR2n-oDHfQ6pDkrHyQY&callback=load&libraries=places" onerror="errorHandling()"></script>
+</body>
+</html>
