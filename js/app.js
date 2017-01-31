@@ -1,10 +1,8 @@
 "use strict";
-
 function load()
 {
   ko.applyBindings(new ViewModel());
 }
-
 function ViewModel()
 {
   var current = this;
@@ -79,7 +77,6 @@ function ViewModel()
       google.maps.event.trigger(current.marker, "click");
     };
   };
-  /*     end*/
   favloc.forEach(function(locationItem)
   {
     current.locationList.push(new placename(locationItem));
