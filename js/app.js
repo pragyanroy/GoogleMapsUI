@@ -1,14 +1,13 @@
 "use strict";
-function load()
-{
+function load(){
   ko.applyBindings(new ViewModel());
 }
-function ViewModel()
-{
+
+function ViewModel(){
   var current = this;
   this.placeentered = ko.observable("");
   this.locationList = ko.observableArray([]);
-  map = new google.maps.Map(document.getElementById("map"),
+  map = new google.maps.Map(document.getElementById('map'),
   {
     zoom: 13,
     center:
@@ -17,8 +16,8 @@ function ViewModel()
       lng: -122.038004
     }
   });
-  var placename = function(data)
-  {
+
+  var Placename = function(data){
     this.stringURL = "";
     this.currentStreet = "";
     this.currentCity = "";
@@ -40,9 +39,10 @@ function ViewModel()
       }
       current.currentStreet = fsresponse.location.formattedAddress[0];
       current.currentCity = fsresponse.location.formattedAddress[1];
-    }).fail(function()
+    })
+    .fail(function()
     {
-      alert("There was an error with the Foursquare API call. Please refresh the page.");
+      alert('There was an error with the Foursquare API call. Please refresh the page.');
     });
     current.contentString = '<div class="info-window-content"><div class="title"><b>' + data.plname + "</b></div>" + '<div class="content">' + current.currentStreet + "</div>" + '<div class="content">' + current.currentCity + "</div>";
     current.infoWindow = new google.maps.InfoWindow(
@@ -66,20 +66,25 @@ function ViewModel()
       }
       return true;
     }, current);
-    this.marker.addListener("click", function()
+    
+
+      
+     
+    this.marker.addListener('click',function()
     {
       current.contentString = '<div class="info-window-content"><div class="title"><b>' + data.plname + "</b></div>" + '<div class="content">' + current.currentStreet + "</div>" + '<div class="content">' + current.currentCity + "</div>";
       current.infoWindow.setContent(current.contentString);
       current.infoWindow.open(map, this);
+      current.marker.setAnimation(google.maps.Animation.BOUNCE);
     });
     this.appear = function(place)
     {
-      google.maps.event.trigger(current.marker, "click");
+      google.maps.event.trigger(current.marker, 'click');
     };
   };
   favloc.forEach(function(locationItem)
   {
-    current.locationList.push(new placename(locationItem));
+    current.locationList.push(new Placename(locationItem));
   });
   this.filteredList = ko.computed(function()
   {
@@ -103,6 +108,6 @@ function ViewModel()
       });
     }
   }, current.locationList);
-  this.mapElem = document.getElementById("map");
+  this.mapElem = document.getElementById('map');
   this.mapElem.style.height = window.innerHeight - 100;
 }

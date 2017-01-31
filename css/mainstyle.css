@@ -26,10 +26,16 @@ bottom : 0;
 .results {
 margin : 0;
 padding : 0;
+background-size: 100% auto;
 }
 .placename {
 margin : 12px;
 padding : 12px;
+background-size: 100% auto;
 list-style : none;
 background-color : #FFFAF0;
+}
+div {
+background-size: 100% auto;
+background-repeat: no-repeat;
 }
